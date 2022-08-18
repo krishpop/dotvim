@@ -42,8 +42,7 @@ source $VIMRUNTIME/menu.vim
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-set wildignore+=**-checkpoint.py
+set wildignore=*.o,*~,*.pyc,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk,*-checkpoint.py
 if has("win16") || has("win32")
     set wildignore+=.git\*,.hg\*,.svn\*
 else
@@ -109,7 +108,7 @@ hi Folded ctermbg=DarkGrey
 " => TAGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " create tags file
-command! MakeTags !ctags -R . --exclude='**.ipynb_checkpoints/'
+command! MakeTags !ctags .
 
 " - Use ^] to jump to tag under cursor
 " - Use g^] for ambiguous tags
@@ -135,7 +134,7 @@ syntax enable
 " colorscheme
 try
     let g:seoul256_background = 234
-    let g:seoul256_light_background = 256
+    let g:seoul256_light_background = 250
     " colo seoul256-light
 catch
 endtry
@@ -205,11 +204,16 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" List buffers
+nnoremap <leader>gb :ls<cr>:b<space>
+
+" Enabling pasting from clipboard (doesn't work)
 set clipboard=unnamed
 vnoremap <C-c> "+y
 
 set mouse=a
 
+" removes highlighting
 nnoremap <leader><cr> :noh<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -277,8 +281,8 @@ function! SwitchToNextBuffer(incr)
     endif
   endwhile
 endfunction
-nnoremap <silent> <C-n> :call SwitchToNextBuffer(1)<CR>
-nnoremap <silent> <C-p> :call SwitchToNextBuffer(-1)<CR>
+nnoremap <silent> <C-n> :bn<CR>
+nnoremap <silent> <C-p> :bp<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
