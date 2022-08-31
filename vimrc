@@ -157,7 +157,6 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -215,6 +214,11 @@ set mouse=a
 
 " removes highlighting
 nnoremap <leader><cr> :noh<cr>
+
+" Finding function uses
+" https://www.reddit.com/r/vim/comments/a7dtbg/find_all_function_usages/
+" set grepprg=grep\ -nrsH
+" command! -nargs=+ -complete=file_in_path Grep update | silent! grep! <args> | redraw!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim Header
@@ -323,3 +327,13 @@ let g:pydiction_menu_height = 5
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim Windowswap
+" https://github.com/wesQ3/vim-windowswap
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
