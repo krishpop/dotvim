@@ -3,7 +3,8 @@ alias a='tmux -CC attach'
 alias at='tmux -CC attach -t'
 alias takeover="tmux detach -a"
 
-# slurm aliases 
+
+# slurm aliases
 alias sint="srun -c 4 --gres=gpu:1 --mem=4GB --qos=nopreemption -p interactive --pty bash"
 alias sintbig="srun -c 32 --gres=gpu:1 --mem=32GB --qos=nopreemption -p interactive --pty bash"
 alias sintbig4="srun -c 32 --gres=gpu:4 --mem=32GB --qos=nopreemption -p interactive --pty bash"
@@ -19,3 +20,12 @@ alias trun4="torchrun --rdzv_backend=c10d --rdzv_endpoint=localhost:0 --nnodes=1
 # other useful aliases
 alias dbpython='python -m pdb -c continue'
 alias gpustat='nvidia-smi -l 1'
+
+alias shact='pyenv activate miniconda3-latest && conda activate shac'
+alias nvim='~/Downloads/nvim.appimage'
+
+alias nvcreate='MESA_GL_VERSION_OVERRIDE=4.6 \
+  ~/.local/share/ov/pkg/create-2022.2.2/omni.create.singlegpu.sh
+'
+
+alias nvim='/home/ksrini/Downloads/nvim.appimage'
